@@ -88,5 +88,5 @@ on conflict (collection, id) do nothing;
 -- Troque pelos e-mails reais (sempre em minúsculas) e rode esta parte de novo
 -- sempre que quiser incluir alguém.
 insert into public.editors (email) values
-  ('rafaela.pontello@dtidigital.com.br''ramon.finelli@dtidigital.com.br')
+  ('rafaela.pontello@dtidigital.com.br')('ramon.finelli@dtidigital.com.br')
 on conflict do nothing;
