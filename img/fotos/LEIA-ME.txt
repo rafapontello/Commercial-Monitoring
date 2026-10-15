@@ -1,0 +1,78 @@
+Fotos dos executivos e gestores
+
+Para incluir uma foto, salve o arquivo nesta pasta em JPG, quadrado,
+com o nome exato da pessoa abaixo (ex.: flavio-thimotio-da-silva.jpg). Sem arquivo, o sistema mostra as iniciais.
+
+simone-de-almeida-pinto-cavalcante.jpg  ->  Simone de Almeida Pinto Cavalcante
+maria-andrea-rodriguez-cereijo.jpg  ->  Maria Andrea Rodriguez Cereijo
+vinicius-borges-pereira.jpg  ->  Vinicius Borges Pereira
+eduardo-moreira-quintao.jpg  ->  Eduardo Moreira Quintao
+claudio-marcio-fortunato.jpg  ->  Claudio Marcio Fortunato
+carlos-sana-de-almeira-junior.jpg  ->  Carlos Sana de Almeira Junior
+maria-stella-michirefe-lehmann.jpg  ->  Maria Stella Michirefe Lehmann
+gabrielly-scotta-loss.jpg  ->  Gabrielly Scotta Loss
+lennon-joseph-alves-bento.jpg  ->  Lennon Joseph Alves Bento
+fabiana-zambroni-neves.jpg  ->  Fabiana Zambroni Neves
+luciana-de-landa-farias-ceotto.jpg  ->  Luciana de Landa Farias Ceotto
+marco-antonio-de-abreu-franca.jpg  ->  Marco Antonio de Abreu Franca
+alan-alberto-silva.jpg  ->  Alan Alberto Silva
+douglas-giovanne-nunes-pimenta.jpg  ->  Douglas Giovanne Nunes Pimenta
+maria-de-fatima-fleitas-brito-kiffer.jpg  ->  Maria de Fatima Fleitas Brito Kiffer
+gustavo-barros-paulino.jpg  ->  Gustavo Barros Paulino
+isa-madalena-fernandes-ferreira.jpg  ->  Isa Madalena Fernandes Ferreira
+marcelo-coelho-dos-santos.jpg  ->  Marcelo Coelho dos Santos
+nhemias-bastos-ferreira-junior.jpg  ->  Nhemias Bastos Ferreira Junior
+evandro-ferreira-de-oliveira.jpg  ->  Evandro Ferreira de Oliveira
+anderson-biss-nunes.jpg  ->  Anderson Biss Nunes
+dennys-modolo-de-assuncao.jpg  ->  Dennys Modolo de Assunçao
+juliene-beatriz-soares-de-oliveira-ragonesi.jpg  ->  Juliene Beatriz Soares de Oliveira Ragonesi
+luiz-rogerio-de-freitas-junior.jpg  ->  Luiz Rogerio de Freitas Junior
+flavio-thimotio-da-silva.jpg  ->  Flavio Thimotio da Silva
+rafaela-ferreira-lage.jpg  ->  Rafaela Ferreira Lage
+camila-nunes-de-souza.jpg  ->  Camila Nunes de Souza
+alan-vitor-de-figueiredo-rocha.jpg  ->  Alan Vitor de Figueiredo Rocha
+daniela-de-miranda-souza.jpg  ->  Daniela de Miranda Souza
+lais-clara-valadares.jpg  ->  Lais Clara Valadares
+jardel-mendes-queiroz.jpg  ->  Jardel Mendes Queiroz
+isabella-santos-medeiros.jpg  ->  Isabella Santos Medeiros
+mayron-cesar-da-silva-nogueira.jpg  ->  Mayron Cesar da Silva Nogueira
+vicentino-jose-pinheiro-rodrigues.jpg  ->  Vicentino Jose Pinheiro Rodrigues
+katia-cristina-de-sousa.jpg  ->  Katia Cristina de Sousa
+leonardo-da-conceicao-araujo.jpg  ->  Leonardo da Conceicao Araujo
+rodrigo-silva-jardim.jpg  ->  Rodrigo Silva Jardim
+lorena-donati-zanchetta-deslandes.jpg  ->  Lorena Donati Zanchetta Deslandes
+monica-pezzodipane-ervatti.jpg  ->  Monica Pezzodipane Ervatti
+flavia-rodrigues-lima-de-mello-abreu.jpg  ->  Flavia Rodrigues Lima de Mello Abreu
+bruno-alves-cunha.jpg  ->  Bruno Alves Cunha
+elaine-coelho-prates.jpg  ->  Elaine Coelho Prates
+priscila-guedes-da-silva.jpg  ->  Priscila Guedes da Silva
+luiz-antonio-goncalves-costa-filho.jpg  ->  Luiz Antonio Goncalves Costa Filho
+mariana-santos-e-souza.jpg  ->  Mariana Santos e Souza
+pedro-ferreira-bemfica-pinto.jpg  ->  Pedro Ferreira Bemfica Pinto
+anne-karoline-de-oliveira-diniz.jpg  ->  Anne Karoline de Oliveira Diniz
+bruno-cesar-silva.jpg  ->  Bruno Cesar Silva
+patricia-de-matos-moura-mendes.jpg  ->  Patricia de Matos Moura Mendes
+carlos-marcony-bacelar-ribeiro.jpg  ->  Carlos Marcony Bacelar Ribeiro
+beatriz-vieira-bogea-fiuza.jpg  ->  Beatriz Vieira Bogea Fiuza
+marcio-rodrigues-de-oliveira.jpg  ->  Marcio Rodrigues de Oliveira
+marcos-vinicius-americano-gabrielli.jpg  ->  Marcos Vinicius Americano Gabrielli
+lucas-andrade-silva.jpg  ->  Lucas Andrade Silva
+fabricio-benicio-de-sousa-maia.jpg  ->  Fabricio Benicio de Sousa Maia
+brunno-albert-melo-aguiar.jpg  ->  Brunno Albert Melo Aguiar
+wagner-gomes-de-souza.jpg  ->  Wagner Gomes de Souza
+delio-braganca-silva-junior.jpg  ->  Delio Braganca Silva Junior
+dalton-fernandes-cota.jpg  ->  Dalton Fernandes Cota
+wong-toh-ming.jpg  ->  Wong Toh Ming
+audomar-daltro-de-andrade.jpg  ->  Audomar Daltro de Andrade
+vanessa-paula-custodio-bhering.jpg  ->  Vanessa Paula Custodio Bhering
+cristiane-callijao-farias.jpg  ->  Cristiane Callijao Farias
+aline-da-conceicao-andrade.jpg  ->  Aline da Conceicao Andrade
+helen-conceicao-pequeno-lima-facci.jpg  ->  Helen Conceicao Pequeno Lima Facci
+gustavo-ferreira-caldas.jpg  ->  Gustavo Ferreira Caldas
+maria-clara-carvalho-barbosa-crespo.jpg  ->  Maria Clara Carvalho Barbosa Crespo
+norberto-pereira-vale.jpg  ->  Norberto Pereira Vale
+markson-andre-martins-de-souza.jpg  ->  Markson Andre Martins de Souza
+alexandre-salomao-de-andrade.jpg  ->  Alexandre Salomao de Andrade
+vinicius-romano-barbosa.jpg  ->  Vinicius Romano Barbosa
+rafael-roseira-barbosa.jpg  ->  Rafael Roseira Barbosa
+rodrigo-da-conceicao-godinho.jpg  ->  Rodrigo da Conceicao Godinho

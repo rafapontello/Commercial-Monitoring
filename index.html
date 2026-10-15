@@ -61,7 +61,8 @@ dialog{border:0;border-radius:var(--radius-md);padding:var(--space-8);max-width:
 dialog::backdrop{background:color-mix(in srgb, var(--navy) 60%, transparent)}
 dialog h2{margin-bottom:var(--space-3)}
 dialog input{margin-bottom:var(--space-3)}
-.dlg-actions{display:flex;justify-content:flex-end;gap:var(--space-2);margin-top:var(--space-4)}
+.dlg-actions{display:flex;justify-content:flex-end;align-items:center;gap:var(--space-2);margin-top:var(--space-4);flex-wrap:wrap}
+.linkbtn{border:0;background:none;padding:0;color:var(--accent);font-weight:700;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--field)}
 .btn.ghost:hover{background:transparent;border-color:var(--ink)}
 .ro-banner a{color:var(--ink-on-warm);font-weight:700;cursor:pointer}
@@ -81,7 +82,7 @@ section{margin-top:72px}
 .small{font-size:14px}
 
 /* battle card dti strip */
-.bc-strip{display:grid;grid-template-columns:1.25fr repeat(4,1fr);background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;text-decoration:none!important;color:inherit!important}
+.bc-strip{display:grid;grid-template-columns:1.25fr repeat(3,1fr);background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;text-decoration:none!important;color:inherit!important}
 .bc-strip > div{padding:var(--space-6);border-left:1px solid var(--line)}
 .bc-strip > div:first-child{border-left:0;background:var(--navy);color:var(--white)}
 .bc-strip .k{font-family:var(--font-text);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:var(--space-3)}
@@ -230,6 +231,35 @@ label.f{display:block;font-family:var(--font-text);font-weight:700;font-size:12p
 .farol-pick button:disabled{cursor:not-allowed}
 .farol-pick button:disabled:not([aria-pressed="true"]){opacity:.45}
 
+/* equipe */
+.ava.sm{--s:40px}
+.hcount{font-family:var(--font-text);font-weight:400;font-size:14px;color:var(--ink-muted);margin-left:8px}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-4);align-items:start}
+.tgroup{border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-2);background:var(--surface)}
+.tgroup.flat{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;border:0;padding:0;background:transparent}
+.trow{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2);border-radius:var(--radius-sm);text-decoration:none;color:var(--ink)}
+.trow:hover{background:color-mix(in srgb, var(--butter) 70%, transparent);color:var(--ink)}
+:root[data-theme="dark"] .trow:hover{background:var(--slate)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .trow:hover{background:var(--slate)}}
+.tinfo{flex:1;min-width:0;display:flex;flex-direction:column}
+.tnm{font-family:var(--font-display);font-weight:700;font-size:15px;line-height:1.25}
+.tarea{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);line-height:1.3;margin-top:2px}
+.tfarol .dot{margin:0}
+.trow.l1{padding-bottom:var(--space-3)}
+.tkids{border-top:1px solid var(--rule-soft);margin:0 var(--space-2);padding:var(--space-2) 0 0 var(--space-4);border-left:1px solid var(--rule-soft)}
+.trow.l2 .tnm{font-size:14px;font-weight:500}
+.cfields{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-top:var(--space-4)}
+.collapsible summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);cursor:pointer}
+.collapsible summary::-webkit-details-marker{display:none}
+.collapsible summary h3{margin:0}
+.collapsible[open] summary{margin-bottom:var(--space-4)}
+.tog{display:inline-flex;align-items:center;gap:var(--space-3);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.tog-txt::after{content:"Mostrar"}
+.collapsible[open] .tog-txt::after{content:"Recolher"}
+.chev{width:32px;height:32px;border-radius:50%;border:1px solid var(--field);display:grid;place-items:center;flex:none;transition:border-color .2s}
+.chev::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.collapsible[open] .chev::before{transform:translateY(2px) rotate(-135deg)}
+.collapsible summary:hover .chev{border-color:var(--accent)}
 /* concorrentes */
 .comps{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:var(--space-4)}
 .ccard{background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)}
@@ -280,19 +310,30 @@ table.plain{width:100%;border-collapse:collapse;font-size:14px}
 <footer class="foot"><div class="foot-in"><span>Uso interno da área comercial</span><img class="lg-navy" src="img/dti-navy.svg" alt="WPP Enterprise Solutions | dti"><img class="lg-white" src="img/dti-white.svg" alt="WPP Enterprise Solutions | dti"></div></footer>
 <div class="status" id="status" role="status" aria-live="polite"></div>
 <dialog id="loginDlg" aria-labelledby="loginTitle">
-  <form method="dialog" id="loginForm">
+  <form id="loginForm" novalidate>
     <span class="eyebrow">Acesso de edição</span>
     <h2 id="loginTitle">Entrar para <b>editar</b></h2>
-    <p class="muted small">Informe o seu e-mail cadastrado. Você vai receber um link de acesso; abra-o neste mesmo navegador.</p>
-    <label class="f" for="loginEmail">E-mail</label>
-    <input type="email" id="loginEmail" required autocomplete="email" placeholder="nome@dtidigital.com.br">
+    <p class="muted small" id="loginHint">Use o e-mail e a senha cadastrados para você.</p>
+    <div id="fEmail">
+      <label class="f" for="loginEmail">E-mail</label>
+      <input type="email" id="loginEmail" autocomplete="username" placeholder="nome@dtidigital.com.br">
+    </div>
+    <div id="fPass">
+      <label class="f" for="loginPass" id="loginPassLabel">Senha</label>
+      <input type="password" id="loginPass" autocomplete="current-password">
+    </div>
     <p class="small" id="loginMsg" role="status"></p>
-    <div class="dlg-actions"><button type="button" class="btn ghost" id="loginCancel">Cancelar</button><button type="submit" class="btn" id="loginSend">Enviar link</button></div>
+    <div class="dlg-actions">
+      <button type="button" class="linkbtn" id="loginForgot">Esqueci minha senha</button>
+      <span style="flex:1"></span>
+      <button type="button" class="btn ghost" id="loginCancel">Cancelar</button>
+      <button type="submit" class="btn" id="loginSend">Entrar</button>
+    </div>
   </form>
 </dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="config.js"></script>
 <script>
 /* ---------- Dados de base (fornecidos pela área de vendas) ---------- */
@@ -333,7 +374,13 @@ const DIRS = [
   {id:"dan",name:"Dan Harif",area:"Dir. Tecnologia, Riscos, Compliance e Segurança da Informação",total:19,service:19,dti:0,dtiContracts:[],
    sup:[["IBM",11,"ibm"],["Deloitte",2,"deloitte"],["Nozomi",1,null,"nozomi"]]}
 ];
-const FAROL = {forte:"Forte",medio:"Médio",fraco:"Fraco",none:"Sem avaliação"};
+/* Gestores abaixo de cada VP-2 (parent = id da diretoria ou do gestor imediato) */
+const MGRS = [{"id":"simone-de-almeida-pinto-cavalcante","name":"Simone de Almeida Pinto Cavalcante","area":"GER GERAL TEC ATEND CORP","role":"Gerente geral","dir":"helio","parent":"helio"},{"id":"maria-andrea-rodriguez-cereijo","name":"Maria Andrea Rodriguez Cereijo","area":"GER SUPR SERV MAT KAM SUD","role":"Gerente","dir":"helio","parent":"simone-de-almeida-pinto-cavalcante"},{"id":"vinicius-borges-pereira","name":"Vinicius Borges Pereira","area":"GER GERAL TEC ATEND NORTE","role":"Gerente geral","dir":"helio","parent":"helio"},{"id":"eduardo-moreira-quintao","name":"Eduardo Moreira Quintao","area":"GER GERAL TEC ATEND SUL/SUDESTE","role":"Gerente geral","dir":"helio","parent":"helio"},{"id":"claudio-marcio-fortunato","name":"Claudio Marcio Fortunato","area":"GER TECNOL. ATEND ES RJ","role":"Gerente","dir":"helio","parent":"eduardo-moreira-quintao"},{"id":"carlos-sana-de-almeira-junior","name":"Carlos Sana de Almeira Junior","area":"GER TECNOLOGIA ATEND MG","role":"Gerente","dir":"helio","parent":"eduardo-moreira-quintao"},{"id":"maria-stella-michirefe-lehmann","name":"Maria Stella Michirefe Lehmann","area":"GER GERAL ARQUITETURA TECNOLOG","role":"Gerente geral","dir":"fabio","parent":"fabio"},{"id":"gabrielly-scotta-loss","name":"Gabrielly Scotta Loss","area":"COORD PROC SOL DIGITAIS INTEGR","role":"Coordenação","dir":"fabio","parent":"maria-stella-michirefe-lehmann"},{"id":"lennon-joseph-alves-bento","name":"Lennon Joseph Alves Bento","area":"GER ARQUITETURA INFRA TECN","role":"Gerente","dir":"fabio","parent":"maria-stella-michirefe-lehmann"},{"id":"fabiana-zambroni-neves","name":"Fabiana Zambroni Neves","area":"GER ARQUITETURA SW E CLOUD","role":"Gerente","dir":"fabio","parent":"maria-stella-michirefe-lehmann"},{"id":"luciana-de-landa-farias-ceotto","name":"Luciana de Landa Farias Ceotto","area":"GER ARQUITETURA TECNOL INDUSTR","role":"Gerente","dir":"fabio","parent":"maria-stella-michirefe-lehmann"},{"id":"marco-antonio-de-abreu-franca","name":"Marco Antonio de Abreu Franca","area":"GER GERAL SOL NEG FIN/SUP/CORP","role":"Gerente geral","dir":"fabio","parent":"fabio"},{"id":"alan-alberto-silva","name":"Alan Alberto Silva","area":"GER GESTÃO ERP SAP","role":"Gerente","dir":"fabio","parent":"marco-antonio-de-abreu-franca"},{"id":"douglas-giovanne-nunes-pimenta","name":"Douglas Giovanne Nunes Pimenta","area":"GER NEO VALE TECN COM LOG SUST","role":"Gerente","dir":"fabio","parent":"marco-antonio-de-abreu-franca"},{"id":"maria-de-fatima-fleitas-brito-kiffer","name":"Maria de Fatima Fleitas Brito Kiffer","area":"GER NEO VALE TECN FIN CONTROL","role":"Gerente","dir":"fabio","parent":"marco-antonio-de-abreu-franca"},{"id":"gustavo-barros-paulino","name":"Gustavo Barros Paulino","area":"GER NEO VALE TECN FUD ERP","role":"Gerente","dir":"fabio","parent":"marco-antonio-de-abreu-franca"},{"id":"isa-madalena-fernandes-ferreira","name":"Isa Madalena Fernandes Ferreira","area":"GER RI MUNICIPAL PA","role":"Gerente","dir":"fabio","parent":"marco-antonio-de-abreu-franca"},{"id":"marcelo-coelho-dos-santos","name":"Marcelo Coelho dos Santos","area":"GER GERAL SOL NEG PROD/MKT/VEN","role":"Gerente geral","dir":"fabio","parent":"fabio"},{"id":"nhemias-bastos-ferreira-junior","name":"Nhemias Bastos Ferreira Junior","area":"COORD PROC SOL DIG COM MKT CAD","role":"Coordenação","dir":"fabio","parent":"marcelo-coelho-dos-santos"},{"id":"evandro-ferreira-de-oliveira","name":"Evandro Ferreira de Oliveira","area":"MGR. DIG SOL NEW BUSINESS","role":"Manager","dir":"fabio","parent":"marcelo-coelho-dos-santos"},{"id":"anderson-biss-nunes","name":"Anderson Biss Nunes","area":"GER GERAL SOL NEG SEG/SUST/SUP","role":"Gerente geral","dir":"fabio","parent":"fabio"},{"id":"dennys-modolo-de-assuncao","name":"Dennys Modolo de Assunçao","area":"GER SOL NEG RH/SAUD/SUST/PROJ","role":"Gerente","dir":"fabio","parent":"anderson-biss-nunes"},{"id":"juliene-beatriz-soares-de-oliveira-ragonesi","name":"Juliene Beatriz Soares de Oliveira Ragonesi","area":"GER ENG CONT OTIM PROC AUTOMA","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"luiz-rogerio-de-freitas-junior","name":"Luiz Rogerio de Freitas Junior","area":"COORD PROC ENG CONTR OTIM IND","role":"Coordenação","dir":"carlos","parent":"juliene-beatriz-soares-de-oliveira-ragonesi"},{"id":"flavio-thimotio-da-silva","name":"Flavio Thimotio da Silva","area":"GER GERAL SOLUCOES GEOTECN SEG","role":"Gerente geral","dir":"carlos","parent":"carlos"},{"id":"rafaela-ferreira-lage","name":"Rafaela Ferreira Lage","area":"COORD PROC ENG MANUT CONF GEOT","role":"Coordenação","dir":"carlos","parent":"flavio-thimotio-da-silva"},{"id":"camila-nunes-de-souza","name":"Camila Nunes de Souza","area":"COORD PROC SOL GEOTEC PERFORM","role":"Coordenação","dir":"carlos","parent":"flavio-thimotio-da-silva"},{"id":"alan-vitor-de-figueiredo-rocha","name":"Alan Vitor de Figueiredo Rocha","area":"GER ENG PROJ AUTOMACAO USINA","role":"Gerente","dir":"carlos","parent":"flavio-thimotio-da-silva"},{"id":"daniela-de-miranda-souza","name":"Daniela de Miranda Souza","area":"GER SOLUC GEOTEC SUD ENGENH","role":"Gerente","dir":"carlos","parent":"flavio-thimotio-da-silva"},{"id":"lais-clara-valadares","name":"Lais Clara Valadares","area":"GER SOLUCOES GEOTEC SUL NORTE","role":"Gerente","dir":"carlos","parent":"flavio-thimotio-da-silva"},{"id":"jardel-mendes-queiroz","name":"Jardel Mendes Queiroz","area":"GER GERAL TECNOLOGIA MINA USIN","role":"Gerente geral","dir":"carlos","parent":"carlos"},{"id":"isabella-santos-medeiros","name":"Isabella Santos Medeiros","area":"GER REG TEC MINA USINA SN SL","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"mayron-cesar-da-silva-nogueira","name":"Mayron Cesar da Silva Nogueira","area":"GER REG TEC MINA USINA SS","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"vicentino-jose-pinheiro-rodrigues","name":"Vicentino Jose Pinheiro Rodrigues","area":"GER REG TEC MINA USINA SUDESTE","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"katia-cristina-de-sousa","name":"Katia Cristina de Sousa","area":"GER REG TEC MINA USINA SUL","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"leonardo-da-conceicao-araujo","name":"Leonardo da Conceicao Araujo","area":"GER SOL MINA GEOC EXPL IQM","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"rodrigo-silva-jardim","name":"Rodrigo Silva Jardim","area":"GER SOL PROCMIN QUAL USINA LAB","role":"Gerente","dir":"carlos","parent":"jardel-mendes-queiroz"},{"id":"lorena-donati-zanchetta-deslandes","name":"Lorena Donati Zanchetta Deslandes","area":"GER TEC ENG FERR PELOT BRIQ","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"monica-pezzodipane-ervatti","name":"Monica Pezzodipane Ervatti","area":"COORD PROC TECN FERR PEL BRIQ","role":"Coordenação","dir":"carlos","parent":"lorena-donati-zanchetta-deslandes"},{"id":"flavia-rodrigues-lima-de-mello-abreu","name":"Flavia Rodrigues Lima de Mello Abreu","area":"GER TEC ENG MAN DIGITAL E PCM","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"bruno-alves-cunha","name":"Bruno Alves Cunha","area":"COORD PROC MANUT DIGITAL","role":"Coordenação","dir":"carlos","parent":"flavia-rodrigues-lima-de-mello-abreu"},{"id":"elaine-coelho-prates","name":"Elaine Coelho Prates","area":"COORD PROC TECNOL ENG MANUT","role":"Coordenação","dir":"carlos","parent":"flavia-rodrigues-lima-de-mello-abreu"},{"id":"priscila-guedes-da-silva","name":"Priscila Guedes da Silva","area":"GER TEC PROJ CAPITAL CORR","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"luiz-antonio-goncalves-costa-filho","name":"Luiz Antonio Goncalves Costa Filho","area":"COORD PROC PROJ TEC OPERAC","role":"Coordenação","dir":"carlos","parent":"priscila-guedes-da-silva"},{"id":"mariana-santos-e-souza","name":"Mariana Santos e Souza","area":"GER TECNOL OPER INTELIGENTES","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"pedro-ferreira-bemfica-pinto","name":"Pedro Ferreira Bemfica Pinto","area":"GER TECNOL PORTO","role":"Gerente","dir":"carlos","parent":"carlos"},{"id":"anne-karoline-de-oliveira-diniz","name":"Anne Karoline de Oliveira Diniz","area":"COORD PROC TECN PORTO NORTE","role":"Coordenação","dir":"carlos","parent":"pedro-ferreira-bemfica-pinto"},{"id":"bruno-cesar-silva","name":"Bruno Cesar Silva","area":"COORD PROC TECN PORTOS SUL SUD","role":"Coordenação","dir":"carlos","parent":"pedro-ferreira-bemfica-pinto"},{"id":"patricia-de-matos-moura-mendes","name":"Patricia de Matos Moura Mendes","area":"GER GERAL DIG WP SERV MANAGEM","role":"Gerente geral","dir":"claudia","parent":"claudia"},{"id":"carlos-marcony-bacelar-ribeiro","name":"Carlos Marcony Bacelar Ribeiro","area":"COORD PROC TI TRANSICAO SERV","role":"Coordenação","dir":"claudia","parent":"patricia-de-matos-moura-mendes"},{"id":"beatriz-vieira-bogea-fiuza","name":"Beatriz Vieira Bogea Fiuza","area":"GER DIGITAL WORKPLACE & SAM","role":"Gerente","dir":"claudia","parent":"patricia-de-matos-moura-mendes"},{"id":"marcio-rodrigues-de-oliveira","name":"Marcio Rodrigues de Oliveira","area":"GER GLOBAL END USER EXPERIENCE","role":"Gerente","dir":"claudia","parent":"patricia-de-matos-moura-mendes"},{"id":"marcos-vinicius-americano-gabrielli","name":"Marcos Vinicius Americano Gabrielli","area":"GER GERAL OPER INFRA TECNOL.","role":"Gerente geral","dir":"claudia","parent":"claudia"},{"id":"lucas-andrade-silva","name":"Lucas Andrade Silva","area":"GER GLOBAL OPS MONIT TECN","role":"Gerente","dir":"claudia","parent":"marcos-vinicius-americano-gabrielli"},{"id":"fabricio-benicio-de-sousa-maia","name":"Fabricio Benicio de Sousa Maia","area":"GER INFRA TEC CKJ, S LUIS, EFC","role":"Gerente","dir":"claudia","parent":"marcos-vinicius-americano-gabrielli"},{"id":"brunno-albert-melo-aguiar","name":"Brunno Albert Melo Aguiar","area":"GER INFRA TEC HOST E CLOUD","role":"Gerente","dir":"claudia","parent":"marcos-vinicius-americano-gabrielli"},{"id":"wagner-gomes-de-souza","name":"Wagner Gomes de Souza","area":"GER INFRA TEC S11D E BELEM","role":"Gerente","dir":"claudia","parent":"marcos-vinicius-americano-gabrielli"},{"id":"delio-braganca-silva-junior","name":"Delio Braganca Silva Junior","area":"GER INFRA TEC SUL","role":"Gerente","dir":"claudia","parent":"marcos-vinicius-americano-gabrielli"},{"id":"dalton-fernandes-cota","name":"Dalton Fernandes Cota","area":"GER INFRA TEC FUND DIG E CYBER","role":"Gerente","dir":"claudia","parent":"claudia"},{"id":"wong-toh-ming","name":"Wong Toh Ming","area":"MGR. TECHNOLOGY ASIA. ME & EUR","role":"Manager","dir":"claudia","parent":"claudia"},{"id":"audomar-daltro-de-andrade","name":"Audomar Daltro de Andrade","area":"MGR. TECHNOLOGY ME & EUR","role":"Manager","dir":"claudia","parent":"claudia"},{"id":"vanessa-paula-custodio-bhering","name":"Vanessa Paula Custodio Bhering","area":"GER GERAL AL ESTR PLAN TECNOLOGIA","role":"Gerente geral","dir":"gilson","parent":"gilson"},{"id":"cristiane-callijao-farias","name":"Cristiane Callijao Farias","area":"GER GES PORT E EXCELENCIA PROJ","role":"Gerente","dir":"gilson","parent":"gilson"},{"id":"aline-da-conceicao-andrade","name":"Aline da Conceicao Andrade","area":"COORD PROC GEST PROJ GOV PERF","role":"Coordenação","dir":"gilson","parent":"cristiane-callijao-farias"},{"id":"helen-conceicao-pequeno-lima-facci","name":"Helen Conceicao Pequeno Lima Facci","area":"COORD PROC INTEGR ENG TEC IND","role":"Coordenação","dir":"gilson","parent":"cristiane-callijao-farias"},{"id":"gustavo-ferreira-caldas","name":"Gustavo Ferreira Caldas","area":"COORD PROC POR SOL NEG CYB ARQ","role":"Coordenação","dir":"gilson","parent":"cristiane-callijao-farias"},{"id":"maria-clara-carvalho-barbosa-crespo","name":"Maria Clara Carvalho Barbosa Crespo","area":"GER GEST PERF VENDA MGMT EST","role":"Gerente","dir":"gilson","parent":"gilson"},{"id":"norberto-pereira-vale","name":"Norberto Pereira Vale","area":"COORD PROC GEST FORNECEDORES","role":"Coordenação","dir":"gilson","parent":"maria-clara-carvalho-barbosa-crespo"},{"id":"markson-andre-martins-de-souza","name":"Markson Andre Martins de Souza","area":"GER SEG OPERACIONAL TECNOLOGIA","role":"Gerente","dir":"gilson","parent":"gilson"},{"id":"alexandre-salomao-de-andrade","name":"Alexandre Salomao de Andrade","area":"GER PORTFOLIO AGIL INOVACAO","role":"Gerente","dir":"patrice","parent":"patrice"},{"id":"vinicius-romano-barbosa","name":"Vinicius Romano Barbosa","area":"GER PROSPECCAO INTEL MODEL. INOV","role":"Gerente","dir":"patrice","parent":"patrice"},{"id":"rafael-roseira-barbosa","name":"Rafael Roseira Barbosa","area":"GER TECN RISCO E CONFORMIDADE","role":"Gerente","dir":"dan","parent":"dan"},{"id":"rodrigo-da-conceicao-godinho","name":"Rodrigo da Conceicao Godinho","area":"GER TECNOL RESPOSTA INCIDENTES","role":"Gerente","dir":"dan","parent":"dan"}];
+const MGR = Object.fromEntries(MGRS.map(m=>[m.id,m]));
+const kidsOf = pid => MGRS.filter(m=>m.parent===pid);
+const teamOf = did => MGRS.filter(m=>m.dir===did);
+const parentName = m => MGR[m.parent] ? MGR[m.parent].name : (DIRS.find(d=>d.id===m.parent)||{}).name;
+const FAROL = {forte:"Consolidado",medio:"Em construção",fraco:"Não desenvolvido",none:"Sem avaliação"};
 const TOTAL = DIRS.reduce((a,d)=>a+d.total,0);
 const TOTAL_DTI = DIRS.reduce((a,d)=>a+d.dti,0);
 const TOTAL_SERV = DIRS.reduce((a,d)=>a+d.service,0);
@@ -348,12 +395,12 @@ const PHOTOS = ["bittar","paulo","helio","fabio","carlos","claudia","gilson","pa
 const LOGOS = ["accenture","deloitte","ey","ibm","dxc","ntt","infosys","stefanini","bitka","radix","engineering","lynx","modular","dell","microsoft","nozomi"];
 
 /* ---------- Estado editável (Supabase, tabela public.docs) ---------- */
-const S = {people:{},dirs:{},comps:{},dti:{}};
+const S = {people:{},dirs:{},comps:{},dti:{},mgrs:{}};
 const STATIC_PEOPLE = Object.fromEntries(PHOTOS.map(id=>[id,{photo:`img/fotos/${id}.jpg`}]));
 LOGOS.forEach(id=>S.comps[id]={logo:`img/logos/${id}.png`});
 S.people = {...STATIC_PEOPLE};
 let sb=null, canWrite=false, canUpload=false, userEmail=null;
-const COLL = {people:"people",dirs:"dirs",dti:"account"};
+const COLL = {people:"people",dirs:"dirs",dti:"account",mgrs:"mgrs"};
 const $view = document.getElementById("view");
 const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const initials = n => n.split(/\s+/).filter(Boolean).filter((w,i,a)=>i===0||i===a.length-1).map(w=>w[0]).join("").toUpperCase();
@@ -380,8 +427,9 @@ function save(coll,id,patch){
 const LI_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>';
 
 function avatar(id,name,size){
-  const p=S.people[id]||{}; const cls="ava"+(size?" "+size:"")+(p.photo?" has":"");
-  const inner = p.photo? `<img src="${esc(p.photo)}" alt="Foto de ${esc(name)}">` : `${esc(initials(name))}`;
+  const p=S.people[id]||{}; const src=p.photo||`img/fotos/${id}.jpg`; const cls="ava has"+(size?" "+size:"");
+  const ini=esc(initials(name));
+  const inner = `<img src="${esc(src)}" alt="Foto de ${esc(name)}" onerror="this.parentNode.classList.remove('has');this.parentNode.textContent='${ini}'">`;
   return `<span class="${cls}">${inner}</span>`;
 }
 function liLink(id){
@@ -401,7 +449,8 @@ function dot(v){return `<span class="dot ${v}"></span>`}
 /* ---------- Views ---------- */
 function viewGeral(){
   const t=S.dti;
-  const acts=[]; DIRS.forEach(d=>((S.dirs[d.id]||{}).acoes||[]).forEach(a=>{if(!a.done)acts.push({a,d})}));
+  const acts=[]; DIRS.forEach(d=>((S.dirs[d.id]||{}).acoes||[]).forEach(a=>{if(!a.done)acts.push({a,href:"#diretoria/"+d.id,label:d.name})}));
+  MGRS.forEach(m=>((S.mgrs[m.id]||{}).acoes||[]).forEach(a=>{if(!a.done)acts.push({a,href:"#gestor/"+m.id,label:`${m.name} (equipe de ${DIRS.find(x=>x.id===m.dir).name})`})}));
   const maxN=Math.max(...DIRS.flatMap(d=>d.sup.filter(s=>s[2]).map(s=>s[1])));
   const sz=n=> Math.round(22+ (Math.sqrt(n)/Math.sqrt(maxN))*20);
   return `
@@ -412,7 +461,6 @@ function viewGeral(){
     <div><div class="k">Contratos dti / total</div><div class="frac">${TOTAL_DTI}<small> / ${TOTAL}</small></div><div class="small" style="opacity:.75;margin-top:6px">${pct(TOTAL_DTI,TOTAL)} da carteira mapeada</div></div>
     <div><div class="k">Relacionamento</div><div class="v">${dot(t.relacionamento||"none")}${FAROL[t.relacionamento||"none"]}</div></div>
     <div><div class="k">Cadência de reunião executiva</div><div class="v">${esc(t.cadencia||"A definir")}</div></div>
-    <div><div class="k">Relacionamento com o time</div><div class="v">${dot(t.relTime||"none")}${FAROL[t.relTime||"none"]}</div></div>
     <div><div class="k">Concorrentes mapeados</div><div class="v">${COMPS.length} empresas</div></div>
   </a>
 
@@ -426,7 +474,8 @@ function viewGeral(){
         <a class="dcard" href="#diretoria/${d.id}"><span class="role-tag">VP-2</span>
           <div class="who">${avatar(d.id,d.name).replace(/<button[^>]*>/,'<span class="ava'+((S.people[d.id]||{}).photo?' has':'')+'">').replace(/<\/button>$/,'</span>')}<div><div class="nm">${esc(d.name)}</div><div class="area">${esc(d.area)}</div></div></div>
           <div class="share"><b>${d.dti}/${d.total}</b><span class="bar"><i style="width:${d.dti?Math.max(3,d.dti/d.total*100):0}%"></i></span><span class="muted">dti</span></div>
-          <div class="farols"><span>${dot(farolOf(d.id,"farolDir"))}Diretor: ${FAROL[farolOf(d.id,"farolDir")]}</span><span>${dot(farolOf(d.id,"farolTime"))}Time: ${FAROL[farolOf(d.id,"farolTime")]}</span></div>
+          <div class="farols"><span>${dot(farolOf(d.id,"farolDir"))}Relacionamento: ${FAROL[farolOf(d.id,"farolDir")]}</span></div>
+          <div class="farols"><span>${teamOf(d.id).length} ${teamOf(d.id).length===1?"pessoa":"pessoas"} na equipe mapeada</span></div>
           <div class="meet">${s.proxReuniao?`Próxima reunião <b>${fmtDate(s.proxReuniao)}</b>`:s.ultReuniao?`Última reunião <b>${fmtDate(s.ultReuniao)}</b>`:"Sem reunião registrada"}</div>
         </a>`}).join("")}
     </div></div></div>
@@ -449,13 +498,75 @@ function viewGeral(){
 
   <section>
     <div class="sec-head"><div><span class="eyebrow">03 Próximos passos</span><h2>Ações em <b>andamento</b></h2><p>Consolidado de todas as diretorias.</p></div></div>
-    <div class="panel">${acts.length?`<ul class="acts">${acts.map(({a,d})=>`<li><span class="t">${esc(a.text)}<a class="src" href="#diretoria/${d.id}">${esc(d.name)}</a></span></li>`).join("")}</ul>`:'<p class="empty">Nenhuma ação registrada. Abra o battle card de uma diretoria para incluir, por exemplo, a busca de reunião executiva.</p>'}</div>
+    <div class="panel">${acts.length?`<ul class="acts">${acts.map(({a,href,label})=>`<li><span class="t">${esc(a.text)}<a class="src" href="${href}">${esc(label)}</a></span></li>`).join("")}</ul>`:'<p class="empty">Nenhuma ação registrada. Abra o battle card de uma diretoria para incluir, por exemplo, a busca de reunião executiva.</p>'}</div>
   </section>`;
 }
 
-function farolPicker(scope,id,key){
-  const v = scope==="dti" ? (S.dti[key]||"none") : farolOf(id,key);
-  return `<div class="farol-pick">${["forte","medio","fraco"].map(k=>`<button type="button" aria-pressed="${v===k}" data-farol="${scope}" data-id="${id}" data-key="${key}" data-val="${k}" ${canWrite?"":"disabled"}>${dot(k)}${FAROL[k]}</button>`).join("")}</div>`;
+function farolPicker(scope,id,key,coll="dirs"){
+  const v = scope==="dti" ? (S.dti[key]||"none") : ((S[coll][id]||{})[key]||"none");
+  return `<div class="farol-pick">${["forte","medio","fraco"].map(k=>`<button type="button" aria-pressed="${v===k}" data-farol="${scope}" data-coll="${coll}" data-id="${id}" data-key="${key}" data-val="${k}" ${canWrite?"":"disabled"}>${dot(k)}${FAROL[k]}</button>`).join("")}</div>`;
+}
+const mgrFarol = id => (S.mgrs[id]||{}).farol||"none";
+const teamOpen={};
+document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.dataset&&t.dataset.team)teamOpen[t.dataset.team]=t.open},true);
+function teamRow(m,cls){
+  return `<a class="trow ${cls}" href="#gestor/${m.id}">${avatar(m.id,m.name,"sm")}<span class="tinfo"><span class="tnm">${esc(m.name)}</span><span class="tarea">${esc(m.area)}</span></span><span class="tfarol" title="Relacionamento: ${FAROL[mgrFarol(m.id)]}">${dot(mgrFarol(m.id))}</span></a>`;
+}
+function teamTree(pid,emptyMsg){
+  const l1=kidsOf(pid);
+  if(!l1.length) return `<p class="empty">${emptyMsg}</p>`;
+  return `<div class="team">${l1.map(m=>{const k=kidsOf(m.id);return `<div class="tgroup">${teamRow(m,"l1")}${k.length?`<div class="tkids">${k.map(x=>teamRow(x,"l2")).join("")}</div>`:""}</div>`}).join("")}</div>`;
+}
+function actionsPanel(coll,id,s,ph){
+  const dis=canWrite?"":"disabled";
+  return `<div class="panel"><h3>Ações em andamento</h3>
+      ${(s.acoes||[]).length?`<ul class="acts">${s.acoes.map(a=>`<li class="${a.done?"done":""}"><input type="checkbox" ${a.done?"checked":""} data-act-toggle="${a.id}" data-coll="${coll}" data-dir="${id}" aria-label="Concluída" ${dis}><span class="t">${esc(a.text)}</span>${canWrite?`<button class="iconbtn" data-act-del="${a.id}" data-coll="${coll}" data-dir="${id}" aria-label="Remover ação">×</button>`:""}</li>`).join("")}</ul>`:'<p class="empty">Nenhuma ação registrada.</p>'}
+      ${canWrite?`<div class="addrow"><input type="text" id="newact" placeholder="${ph}" aria-label="Nova ação"><button class="btn" data-act-add="${id}" data-coll="${coll}">Adicionar</button></div>`:""}
+    </div>`;
+}
+function viewMgr(id){
+  const m=MGR[id]; if(!m) return viewGeral();
+  const d=DIRS.find(x=>x.id===m.dir), s=S.mgrs[id]||{}, p=S.people[id]||{};
+  const sib=kidsOf(m.parent), i=sib.findIndex(x=>x.id===id);
+  const prev=sib[(i-1+sib.length)%sib.length], next=sib[(i+1)%sib.length];
+  const up=MGR[m.parent];
+  const dis=canWrite?"":"disabled";
+  const tot=+s.contratosTotal||0, dt=+s.contratosDti||0;
+  const kids=kidsOf(id);
+  return `
+  <div class="crumbs"><span><a href="#geral">Visão geral</a> &nbsp;/&nbsp; <a href="#diretoria/${d.id}">${esc(d.name)}</a>${up?` &nbsp;/&nbsp; <a href="#gestor/${up.id}">${esc(up.name)}</a>`:""}</span>${sib.length>1?`<span><a href="#gestor/${prev.id}">Anterior</a> &nbsp;|&nbsp; <a href="#gestor/${next.id}">Próximo</a></span>`:""}</div>
+  <div class="bc-head">
+    ${avatar(id,m.name,"lg")}
+    <div style="flex:1;min-width:240px">
+      <div class="area">${esc(m.area)}</div>
+      <h1>${esc(m.name)}</h1>
+      <div class="muted small">${esc(m.role)}, reporta a ${esc(parentName(m))}</div>
+      <div class="lirow">${p.linkedin?liLink(id):""}${canWrite?`<input type="url" placeholder="Cole o link do LinkedIn" value="${esc(p.linkedin||"")}" data-li="${id}" aria-label="LinkedIn de ${esc(m.name)}">`:(p.linkedin?"":liLink(id))}</div>
+    </div>
+  </div>
+
+  <div class="grid g3">
+    <div class="panel"><h3>Reuniões</h3>
+      <label class="f" for="ult">Última reunião</label><input id="ult" type="date" value="${esc(s.ultReuniao||"")}" data-coll="mgrs" data-dir="${id}" data-key="ultReuniao" ${dis}>
+      <label class="f" for="prox" style="margin-top:10px">Próxima reunião</label><input id="prox" type="date" value="${esc(s.proxReuniao||"")}" data-coll="mgrs" data-dir="${id}" data-key="proxReuniao" ${dis}>
+    </div>
+    <div class="panel"><h3>Relacionamento com o gestor</h3>${farolPicker("dir",id,"farol","mgrs")}</div>
+    <div class="panel"><h3>Contratos da área</h3>
+      ${tot?`<div class="stat"><div class="dti"><b>${dt}/${tot}</b><span>dti / total</span></div><div><b>${pct(dt,tot)}</b><span>participação dti</span></div></div>`:'<p class="empty">Contratos ainda não informados.</p>'}
+      ${s.contratosDtiNomes?`<div class="chips">${s.contratosDtiNomes.split(",").map(x=>x.trim()).filter(Boolean).map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>`:""}
+      ${canWrite?`<div class="cfields"><div><label class="f" for="ctot">Total</label><input id="ctot" type="number" min="0" inputmode="numeric" value="${esc(s.contratosTotal||"")}" data-coll="mgrs" data-dir="${id}" data-key="contratosTotal"></div><div><label class="f" for="cdti">dti</label><input id="cdti" type="number" min="0" inputmode="numeric" value="${esc(s.contratosDti||"")}" data-coll="mgrs" data-dir="${id}" data-key="contratosDti"></div></div>
+      <label class="f" for="cnom" style="margin-top:10px">Contratos dti (separe por vírgula)</label><input id="cnom" type="text" value="${esc(s.contratosDtiNomes||"")}" data-coll="mgrs" data-dir="${id}" data-key="contratosDtiNomes" placeholder="Ex.: SGC, IBP">`:""}
+    </div>
+  </div>
+
+  ${kids.length?`<div class="grid" style="margin-top:14px"><div class="panel"><h3>Equipe</h3><div class="team"><div class="tgroup flat">${kids.map(x=>teamRow(x,"l2")).join("")}</div></div></div></div>`:""}
+
+  <div class="grid g2" style="margin-top:14px">
+    ${actionsPanel("mgrs",id,s,"Ex.: buscar reunião com o gestor")}
+    <div class="panel"><h3>Melhorias para a frente</h3>
+      <textarea data-coll="mgrs" data-dir="${id}" data-key="melhorias" placeholder="O que precisa mudar no relacionamento, na oferta ou na abordagem desta área" ${dis} aria-label="Melhorias para a frente">${esc(s.melhorias||"")}</textarea>
+    </div>
+  </div>`;
 }
 
 function viewDir(id){
@@ -482,14 +593,17 @@ function viewDir(id){
       <label class="f" for="ult">Última reunião</label><input id="ult" type="date" value="${esc(s.ultReuniao||"")}" data-dir="${d.id}" data-key="ultReuniao" ${dis}>
       <label class="f" for="prox" style="margin-top:10px">Próxima reunião</label><input id="prox" type="date" value="${esc(s.proxReuniao||"")}" data-dir="${d.id}" data-key="proxReuniao" ${dis}>
     </div>
-    <div class="panel"><h3>Farol do diretor</h3>${farolPicker("dir",d.id,"farolDir")}
-      <h3 style="margin-top:18px">Farol do time</h3>${farolPicker("dir",d.id,"farolTime")}
+    <div class="panel"><h3>Relacionamento com o diretor</h3>${farolPicker("dir",d.id,"farolDir")}
     </div>
     <div class="panel"><h3>Contratos da área</h3>
       <div class="stat"><div class="dti"><b>${d.dti}/${d.total}</b><span>dti / total</span></div><div><b>${d.service}</b><span>de serviço</span></div><div><b>${pct(d.dti,d.total)}</b><span>participação dti</span></div></div>
       <div class="chips">${d.dtiContracts.length?d.dtiContracts.map(c=>`<span class="chip${c.q?" q":""}">${esc(c.n)}${c.q?" (a confirmar)":""}</span>`).join(""):'<span class="muted small">Nenhum contrato dti nesta área</span>'}</div>
       ${d.note?`<div class="note">${esc(d.note)}</div>`:""}
     </div>
+  </div>
+
+  <div class="grid" style="margin-top:14px">
+    <details class="panel collapsible" data-team="${d.id}" ${teamOpen[d.id]?"open":""}><summary><h3>Equipe <span class="hcount">${teamOf(d.id).length?teamOf(d.id).length+" pessoas":""}</span></h3><span class="tog"><span class="tog-txt"></span><span class="chev" aria-hidden="true"></span></span></summary>${teamTree(d.id,"Ainda não há gestores mapeados abaixo desta diretoria.")}</details>
   </div>
 
   <div class="grid" style="margin-top:14px">
@@ -504,10 +618,7 @@ function viewDir(id){
   </div>
 
   <div class="grid g2" style="margin-top:14px">
-    <div class="panel"><h3>Ações em andamento</h3>
-      ${(s.acoes||[]).length?`<ul class="acts">${s.acoes.map(a=>`<li class="${a.done?"done":""}"><input type="checkbox" ${a.done?"checked":""} data-act-toggle="${a.id}" data-dir="${d.id}" aria-label="Concluída" ${dis}><span class="t">${esc(a.text)}</span>${canWrite?`<button class="iconbtn" data-act-del="${a.id}" data-dir="${d.id}" aria-label="Remover ação">×</button>`:""}</li>`).join("")}</ul>`:'<p class="empty">Nenhuma ação registrada.</p>'}
-      ${canWrite?`<div class="addrow"><input type="text" id="newact" placeholder="Ex.: buscar reunião executiva com o diretor" aria-label="Nova ação"><button class="btn" data-act-add="${d.id}">Adicionar</button></div>`:""}
-    </div>
+    ${actionsPanel("dirs",d.id,s,"Ex.: buscar reunião executiva com o diretor")}
     <div class="panel"><h3>Melhorias para a frente</h3>
       <textarea data-dir="${d.id}" data-key="melhorias" placeholder="O que precisa mudar no relacionamento, na oferta ou na abordagem desta diretoria" ${dis} aria-label="Melhorias para a frente">${esc(s.melhorias||"")}</textarea>
     </div>
@@ -521,7 +632,7 @@ function viewDti(){
   <div class="crumbs"><a href="#geral">Visão geral</a></div>
   <span class="eyebrow">Posição consolidada</span><h1>Battle card <b>dti</b></h1>
   <p class="lede">Posição consolidada da dti na conta Vale, frente aos concorrentes mapeados.</p>
-  <div class="grid g3">
+  <div class="grid g2">
     <div class="panel"><h3>Contratos dti / total</h3>
       <div class="stat"><div class="dti"><b>${TOTAL_DTI}/${TOTAL}</b><span>contratos</span></div><div><b>${pct(TOTAL_DTI,TOTAL)}</b><span>participação</span></div><div><b>${withDti}/${DIRS.length}</b><span>diretorias com dti</span></div></div>
       <p class="small muted" style="margin:12px 0 0">${TOTAL_SERV} dos ${TOTAL} contratos são de serviço.</p>
@@ -529,15 +640,12 @@ function viewDti(){
     <div class="panel"><h3>Relacionamento</h3>${farolPicker("dti","dti","relacionamento")}
       <textarea style="margin-top:12px;min-height:70px" data-dti="relNota" placeholder="Contexto do relacionamento com a liderança" ${dis} aria-label="Contexto do relacionamento">${esc(t.relNota||"")}</textarea>
     </div>
-    <div class="panel"><h3>Relacionamento com o time</h3>${farolPicker("dti","dti","relTime")}
-      <textarea style="margin-top:12px;min-height:70px" data-dti="timeNota" placeholder="Contexto do relacionamento com os times" ${dis} aria-label="Contexto do relacionamento com o time">${esc(t.timeNota||"")}</textarea>
-    </div>
   </div>
   <div class="grid g2" style="margin-top:14px">
     <div class="panel"><h3>Cadência de reunião executiva</h3>
       <input type="text" data-dti="cadencia" value="${esc(t.cadencia||"")}" placeholder="Ex.: trimestral com o VP-1, mensal com diretores" ${dis} aria-label="Cadência de reunião executiva">
       <h3 style="margin-top:18px">Participação por diretoria</h3>
-      <div class="tbl-wrap"><table class="plain"><thead><tr><th>Diretoria</th><th style="text-align:right">dti / total</th><th>Farol diretor</th></tr></thead><tbody>
+      <div class="tbl-wrap"><table class="plain"><thead><tr><th>Diretoria</th><th style="text-align:right">dti / total</th><th>Relacionamento</th></tr></thead><tbody>
       ${DIRS.map(d=>`<tr><td><a href="#diretoria/${d.id}">${esc(d.name)}</a></td><td class="n">${d.dti}/${d.total}</td><td>${dot(farolOf(d.id,"farolDir"))}${FAROL[farolOf(d.id,"farolDir")]}</td></tr>`).join("")}
       </tbody></table></div>
     </div>
@@ -569,6 +677,7 @@ function render(){
   const h=(location.hash||"#geral").slice(1);
   let html, nav="geral";
   if(h.startsWith("diretoria/")){html=viewDir(h.split("/")[1]);nav="geral"}
+  else if(h.startsWith("gestor/")){html=viewMgr(h.split("/")[1]);nav="geral"}
   else if(h==="dti"){html=viewDti();nav="dti"}
   else if(h==="concorrentes"){html=viewConc();nav="concorrentes"}
   else html=viewGeral();
@@ -584,23 +693,23 @@ document.addEventListener("focusout",()=>setTimeout(()=>{if(pending&&!isEditing(
 
 /* ---------- Interações ---------- */
 document.addEventListener("click",e=>{
-  if(e.target.closest("[data-login]")){e.preventDefault();openLogin();return}
+  if(e.target.closest("[data-login]")){e.preventDefault();openLogin("login");return}
   const f=e.target.closest("[data-farol]");
   if(f&&canWrite){const {farol,id,key,val}=f.dataset;
-    if(farol==="dti") save("dti","dti",{[key]:val}); else save("dirs",id,{[key]:val});
+    if(farol==="dti") save("dti","dti",{[key]:val}); else save(f.dataset.coll||"dirs",id,{[key]:val});
     render();return}
   const add=e.target.closest("[data-act-add]");
   if(add){const inp=document.getElementById("newact");const txt=inp.value.trim();if(!txt){inp.focus();return}
-    const id=add.dataset.actAdd;const list=[...((S.dirs[id]||{}).acoes||[]),{id:Date.now().toString(36),text:txt,done:false}];
-    inp.value="";inp.blur();save("dirs",id,{acoes:list});render();return}
+    const id=add.dataset.actAdd,c=add.dataset.coll||"dirs";const list=[...((S[c][id]||{}).acoes||[]),{id:Date.now().toString(36),text:txt,done:false}];
+    inp.value="";inp.blur();save(c,id,{acoes:list});render();return}
   const del=e.target.closest("[data-act-del]");
-  if(del){const id=del.dataset.dir;const list=((S.dirs[id]||{}).acoes||[]).filter(a=>a.id!==del.dataset.actDel);save("dirs",id,{acoes:list});render();return}
+  if(del){const id=del.dataset.dir,c=del.dataset.coll||"dirs";const list=((S[c][id]||{}).acoes||[]).filter(a=>a.id!==del.dataset.actDel);save(c,id,{acoes:list});render();return}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="newact"){e.preventDefault();document.querySelector("[data-act-add]").click()}});
 document.addEventListener("change",e=>{
   const el=e.target;
-  if(el.dataset.actToggle){const id=el.dataset.dir;const list=((S.dirs[id]||{}).acoes||[]).map(a=>a.id===el.dataset.actToggle?{...a,done:el.checked}:a);save("dirs",id,{acoes:list});render();return}
-  if(el.dataset.dir&&el.dataset.key){if(((S.dirs[el.dataset.dir]||{})[el.dataset.key]||"")!==el.value) save("dirs",el.dataset.dir,{[el.dataset.key]:el.value});return}
+  if(el.dataset.actToggle){const id=el.dataset.dir,c=el.dataset.coll||"dirs";const list=((S[c][id]||{}).acoes||[]).map(a=>a.id===el.dataset.actToggle?{...a,done:el.checked}:a);save(c,id,{acoes:list});render();return}
+  if(el.dataset.dir&&el.dataset.key){const c=el.dataset.coll||"dirs";if(String((S[c][el.dataset.dir]||{})[el.dataset.key]||"")!==el.value){save(c,el.dataset.dir,{[el.dataset.key]:el.value});if(c==="mgrs"&&/^contratos/.test(el.dataset.key))render()}return}
   if(el.dataset.dti){if((S.dti[el.dataset.dti]||"")!==el.value) save("dti","dti",{[el.dataset.dti]:el.value});return}
   if(el.dataset.li){let v=el.value.trim();if(v&&!/^https?:\/\//i.test(v))v="https://"+v;
     if(v&&!/linkedin\.com\//i.test(v)){toast("Use um link do linkedin.com");return}
@@ -620,14 +729,13 @@ function buildWorkbook(){
     ["Contratos dti",TOTAL_DTI],["Total de contratos",TOTAL],["Participação dti",TOTAL?TOTAL_DTI/TOTAL:0],
     ["Contratos de serviço",TOTAL_SERV],["Diretorias com dti",`${DIRS.filter(d=>d.dti>0).length} de ${DIRS.length}`],
     ["Relacionamento",F(t.relacionamento)],["Contexto do relacionamento",t.relNota||""],
-    ["Relacionamento com o time",F(t.relTime)],["Contexto do time",t.timeNota||""],
     ["Cadência de reunião executiva",t.cadencia||""]
   ],[32,60]);
   add("Executivos",[["Nome","Cargo","Diretoria","Reporta a","LinkedIn"],
     ...EXECS.map((e,i)=>[e.name,e.role,"",i?EXECS[0].name:"",(S.people[e.id]||{}).linkedin||""]),
     ...DIRS.map(d=>[d.name,"VP-2",d.area,EXECS[1].name,(S.people[d.id]||{}).linkedin||""])],[34,14,52,22,60]);
-  add("Diretorias",[["Diretor","Diretoria","Contratos totais","Contratos de serviço","Contratos dti","Participação dti","Contratos dti (nomes)","Farol diretor","Farol time","Última reunião","Próxima reunião","Observação","Melhorias para a frente"],
-    ...DIRS.map(d=>{const s=S.dirs[d.id]||{};return [d.name,d.area,d.total,d.service,d.dti,d.total?d.dti/d.total:0,d.dtiContracts.map(c=>c.n+(c.q?" (a confirmar)":"")).join(", "),F(s.farolDir),F(s.farolTime),fmtDate(s.ultReuniao),fmtDate(s.proxReuniao),d.note||"",s.melhorias||""]})],
+  add("Diretorias",[["Diretor","Diretoria","Contratos totais","Contratos de serviço","Contratos dti","Participação dti","Contratos dti (nomes)","Relacionamento com o diretor","Última reunião","Próxima reunião","Observação","Melhorias para a frente"],
+    ...DIRS.map(d=>{const s=S.dirs[d.id]||{};return [d.name,d.area,d.total,d.service,d.dti,d.total?d.dti/d.total:0,d.dtiContracts.map(c=>c.n+(c.q?" (a confirmar)":"")).join(", "),F(s.farolDir),fmtDate(s.ultReuniao),fmtDate(s.proxReuniao),d.note||"",s.melhorias||""]})],
     [34,52,15,18,13,15,26,14,14,14,15,30,60]);
   add("Mapa de presença",[["Diretor","Diretoria","dti",...COMPS.map(c=>c.name),"Total da área"],
     ...DIRS.map(d=>[d.name,d.area,d.dti,...COMPS.map(c=>compCount(d,c.id)||""),d.total]),
@@ -638,8 +746,12 @@ function buildWorkbook(){
   add("Fornecedores",fr,[34,52,24,11,20]);
   add("Concorrentes",[["Concorrente","Contratos na conta","Nº de diretorias","Diretorias (contratos)"],
     ...COMP_STATS.map(c=>[c.name,c.total,c.per.length,c.per.map(x=>`${x.d.name} (${x.n})`).join("; ")])],[22,18,16,110]);
-  const ac=[["Diretor","Diretoria","Ação","Status"]];
+  add("Gestores",[["VP-2","Reporta a","Nome","Cargo","Área","LinkedIn","Relacionamento","Última reunião","Próxima reunião","Contratos totais","Contratos dti","Contratos dti (nomes)","Melhorias para a frente"],
+    ...MGRS.map(m=>{const s=S.mgrs[m.id]||{};return [DIRS.find(x=>x.id===m.dir).name,parentName(m),m.name,m.role,m.area,(S.people[m.id]||{}).linkedin||"",F(s.farol),fmtDate(s.ultReuniao),fmtDate(s.proxReuniao),s.contratosTotal?+s.contratosTotal:"",s.contratosDti?+s.contratosDti:"",s.contratosDtiNomes||"",s.melhorias||""]})],
+    [32,34,36,16,36,50,18,14,15,15,13,24,60]);
+  const ac=[["Responsável","Área","Ação","Status"]];
   DIRS.forEach(d=>((S.dirs[d.id]||{}).acoes||[]).forEach(a=>ac.push([d.name,d.area,a.text,a.done?"Concluída":"Em andamento"])));
+  MGRS.forEach(m=>((S.mgrs[m.id]||{}).acoes||[]).forEach(a=>ac.push([m.name,m.area,a.text,a.done?"Concluída":"Em andamento"])));
   if(ac.length===1) ac.push(["","","Nenhuma ação registrada",""]);
   add("Ações",ac,[34,52,70,15]);
   // formato percentual
@@ -664,17 +776,48 @@ expBtn.addEventListener("click",async()=>{
 /* ---------- Conexão com o Supabase ---------- */
 let dbChecked=false;
 const authBtn=document.getElementById("authBtn"), dlg=document.getElementById("loginDlg");
-function openLogin(){document.getElementById("loginMsg").textContent="";dlg.showModal();document.getElementById("loginEmail").focus()}
-document.getElementById("loginCancel").addEventListener("click",()=>dlg.close());
-document.getElementById("loginForm").addEventListener("submit",async e=>{
+const $=id=>document.getElementById(id);
+let loginMode="login"; // login | forgot | reset
+function setMode(m){
+  loginMode=m; $("loginMsg").textContent=""; $("loginPass").value="";
+  $("fEmail").hidden = m==="reset";
+  $("fPass").hidden  = m==="forgot";
+  $("loginForgot").hidden = m!=="login";
+  $("loginCancel").hidden = m==="reset";
+  $("loginTitle").innerHTML = m==="login" ? "Entrar para <b>editar</b>" : m==="forgot" ? "Recuperar <b>senha</b>" : "Nova <b>senha</b>";
+  $("loginHint").textContent = m==="login" ? "Use o e-mail e a senha cadastrados para você."
+    : m==="forgot" ? "Informe seu e-mail. Você vai receber um link para criar uma nova senha."
+    : "Defina sua nova senha, com pelo menos 8 caracteres.";
+  $("loginPassLabel").textContent = m==="reset" ? "Nova senha" : "Senha";
+  $("loginPass").autocomplete = m==="reset" ? "new-password" : "current-password";
+  $("loginSend").textContent = m==="login" ? "Entrar" : m==="forgot" ? "Enviar link" : "Salvar senha";
+}
+function openLogin(mode="login"){setMode(mode);if(!dlg.open)dlg.showModal();(mode==="reset"?$("loginPass"):$("loginEmail")).focus()}
+$("loginCancel").addEventListener("click",()=>dlg.close());
+$("loginForgot").addEventListener("click",()=>openLogin("forgot"));
+$("loginForm").addEventListener("submit",async e=>{
   e.preventDefault(); if(!sb) return;
-  const email=document.getElementById("loginEmail").value.trim().toLowerCase(), msg=document.getElementById("loginMsg"), btn=document.getElementById("loginSend");
-  btn.disabled=true; msg.textContent="Enviando…";
-  const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname,shouldCreateUser:false}});
-  btn.disabled=false;
-  msg.textContent = error ? "Não foi possível enviar. Confira se o e-mail foi convidado como editor." : "Link enviado. Abra o e-mail e clique no link para entrar.";
+  const email=$("loginEmail").value.trim().toLowerCase(), pass=$("loginPass").value, msg=$("loginMsg"), btn=$("loginSend");
+  if(loginMode!=="reset"&&!email){msg.textContent="Informe o e-mail.";return}
+  if(loginMode!=="forgot"&&!pass){msg.textContent="Informe a senha.";return}
+  btn.disabled=true; msg.textContent="Aguarde…";
+  try{
+    if(loginMode==="login"){
+      const {error}=await sb.auth.signInWithPassword({email,password:pass});
+      if(error){msg.textContent = /invalid/i.test(error.message) ? "E-mail ou senha incorretos." : "Não foi possível entrar. Tente de novo.";return}
+      dlg.close(); toast("Você entrou no modo de edição");
+    }else if(loginMode==="forgot"){
+      const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+      msg.textContent = error ? "Não foi possível enviar agora. Tente de novo em alguns minutos." : "Se o e-mail estiver cadastrado, o link chega em instantes.";
+    }else{
+      if(pass.length<8){msg.textContent="A senha precisa ter pelo menos 8 caracteres.";return}
+      const {error}=await sb.auth.updateUser({password:pass});
+      if(error){msg.textContent="Não foi possível salvar a senha. Abra o link do e-mail de novo.";return}
+      dlg.close(); history.replaceState(null,"",location.pathname+"#geral"); toast("Senha atualizada");
+    }
+  }finally{btn.disabled=false}
 });
-authBtn.addEventListener("click",async()=>{ if(userEmail){await sb.auth.signOut()} else openLogin() });
+authBtn.addEventListener("click",async()=>{ if(userEmail){await sb.auth.signOut();toast("Você saiu")} else openLogin("login") });
 
 async function applySession(session){
   userEmail = session?.user?.email?.toLowerCase() || null;
@@ -691,6 +834,7 @@ function applyRow(r){
   if(r.collection==="account"){ if(r.id==="dti") S.dti={...(r.data||{})}; return }
   if(r.collection==="people"){ S.people[r.id]={...(STATIC_PEOPLE[r.id]||{}),...(r.data||{})}; return }
   if(r.collection==="dirs"){ S.dirs[r.id]={...(r.data||{})} }
+  if(r.collection==="mgrs"){ S.mgrs[r.id]={...(r.data||{})} }
 }
 render();
 (async()=>{
@@ -703,12 +847,12 @@ render();
     (data||[]).forEach(applyRow);
     dbChecked=true;
     sb.channel("docs-live").on("postgres_changes",{event:"*",schema:"public",table:"docs"},p=>{
-      if(p.eventType==="DELETE"){const o=p.old||{};if(o.collection==="dirs")delete S.dirs[o.id];render();return}
+      if(p.eventType==="DELETE"){const o=p.old||{};if(o.collection==="dirs")delete S.dirs[o.id];if(o.collection==="mgrs")delete S.mgrs[o.id];render();return}
       applyRow(p.new);render();
     }).subscribe();
     const {data:{session}}=await sb.auth.getSession();
     await applySession(session);
-    sb.auth.onAuthStateChange((_ev,s)=>{applySession(s)});
+    sb.auth.onAuthStateChange((ev,s)=>{applySession(s);if(ev==="PASSWORD_RECOVERY")openLogin("reset")});
   }catch(err){console.error(err);sb=null;dbChecked=true;render()}
 })();
 </script>

@@ -14,8 +14,9 @@ create table if not exists public.editors (
 --   collection 'people'  -> id da pessoa   (LinkedIn)
 --   collection 'dirs'    -> id da diretoria (farol, reuniões, ações, melhorias)
 --   collection 'account' -> id 'dti'        (battle card dti)
+--   collection 'mgrs'    -> id do gestor    (relacionamento, reuniões, contratos, ações, melhorias)
 create table if not exists public.docs (
-  collection text not null check (collection in ('people','dirs','account')),
+  collection text not null check (collection in ('people','dirs','account','mgrs')),
   id         text not null,
   data       jsonb not null default '{}'::jsonb,
   updated_at timestamptz not null default now(),
@@ -88,5 +89,5 @@ on conflict (collection, id) do nothing;
 -- Troque pelos e-mails reais (sempre em minúsculas) e rode esta parte de novo
 -- sempre que quiser incluir alguém.
 insert into public.editors (email) values
-  ('rafaela.pontello@dtidigital.com.br')('ramon.finelli@dtidigital.com.br')
+  ('seu.email@dtidigital.com.br')
 on conflict do nothing;
