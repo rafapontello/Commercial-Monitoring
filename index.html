@@ -43,16 +43,17 @@ h1,h2,h3{font-family:var(--font-display);color:var(--ink);margin:0;text-wrap:pre
 
 /* header: chão navy */
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--navy);color:var(--white);border-bottom:1px solid color-mix(in srgb, var(--white) 14%, transparent)}
-.top-in{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;min-height:72px}
+.top-in{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;min-height:64px}
 .brand{display:flex;align-items:center;gap:16px;padding:14px 0}
 .vale-logo{height:32px;width:auto;display:block}
 .brand span{border-left:1px solid color-mix(in srgb, var(--white) 30%, transparent);padding-left:16px;font-family:var(--font-display);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--lavender)}
-nav{display:flex;gap:28px;margin-left:auto;align-self:stretch}
-nav a{color:var(--lavender);text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;border-bottom:2px solid transparent;padding-top:2px}
+nav{display:flex;gap:18px;margin-left:auto;align-self:stretch}
+nav a{color:var(--lavender);text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;border-bottom:2px solid transparent;padding-top:2px;white-space:nowrap}
+@media (max-width:1180px){.brand span{display:none}}
 nav a:hover{color:var(--white)}
 @media (max-width:760px){nav{width:100%;margin-left:0;overflow-x:auto;gap:20px;min-height:44px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{white-space:nowrap;flex:none}}
 nav a[aria-current="page"]{color:var(--white);border-bottom-color:var(--gold)}
-.exp{border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:0 18px;min-height:38px;border-radius:var(--radius-pill);cursor:pointer;transition:background-color .2s,color .2s}
+.exp{border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:0 14px;min-height:34px;white-space:nowrap;border-radius:var(--radius-pill);cursor:pointer;transition:background-color .2s,color .2s}
 .exp:hover{background:var(--gold);color:var(--navy)}
 .exp:disabled{opacity:.45;cursor:wait}
 
@@ -312,7 +313,7 @@ label.f{display:block;font-family:var(--font-text);font-weight:700;font-size:12p
 :root[data-theme="dark"] .e-hz i{background:var(--line)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .e-hz i{background:var(--line)}}
 .e-hz i.on{background:var(--rust)}
-.e-hzl{display:block;font-size:12px;color:var(--ink-muted);margin-top:4px;font-weight:700}
+.e-hzl{font-family:var(--font-display);font-size:15px;color:var(--ink);font-weight:700;white-space:nowrap}
 .e-kpi{font-weight:700;color:var(--ink)}
 .e-foco{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
 .e-foco-card{background:var(--navy);color:var(--white);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)}
@@ -365,8 +366,8 @@ table.plain{width:100%;border-collapse:collapse;font-size:14px}
 <header class="top"><div class="top-in">
   <div class="brand"><img class="vale-logo" src="img/vale.png" alt="Vale"><span>Monitor de conta dti</span></div>
   <nav id="nav">
-    <a href="#geral">Visão geral</a>
     <a href="#estrategia">Estratégia Vale</a>
+    <a href="#geral">Visão geral</a>
     <a href="#dti">Battle card dti</a>
     <a href="#concorrentes">Concorrentes</a>
   </nav>
@@ -806,7 +807,7 @@ function viewEstrategia(){
         <td><div class="e-pcell"><span class="e-num">${i+1}</span><b class="e-pname">${esc(n)}</b></div></td>
         <td>${esc(o)}</td>
         <td>${tags(p)}</td>
-        <td><div class="e-hz" title="2026–${end}">${years.map(y=>`<i class="${y<=end?"on":""}"></i>`).join("")}</div><span class="e-hzl">2026–${String(end).slice(2)}</span></td>
+        <td class="e-hzl">2026–${end}</td>
         <td class="e-kpi">${esc(k)}</td></tr>`).join("")}</tbody>
     </table></div>
   </section>
