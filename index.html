@@ -50,6 +50,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--ink);margin:0;text-wrap:pre
 nav{display:flex;gap:28px;margin-left:auto;align-self:stretch}
 nav a{color:var(--lavender);text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;border-bottom:2px solid transparent;padding-top:2px}
 nav a:hover{color:var(--white)}
+@media (max-width:760px){nav{width:100%;margin-left:0;overflow-x:auto;gap:20px;min-height:44px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav a{white-space:nowrap;flex:none}}
 nav a[aria-current="page"]{color:var(--white);border-bottom-color:var(--gold)}
 .exp{border:1px solid var(--gold);background:transparent;color:var(--gold);font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:0 18px;min-height:38px;border-radius:var(--radius-pill);cursor:pointer;transition:background-color .2s,color .2s}
 .exp:hover{background:var(--gold);color:var(--navy)}
@@ -260,6 +261,71 @@ label.f{display:block;font-family:var(--font-text);font-weight:700;font-size:12p
 .chev::before{content:"";width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
 .collapsible[open] .chev::before{transform:translateY(2px) rotate(-135deg)}
 .collapsible summary:hover .chev{border-color:var(--accent)}
+
+/* estratégia vale */
+.e-statement{background:var(--navy);color:var(--white);border-radius:var(--radius-md);padding:var(--space-12) var(--space-8);margin-top:var(--space-6)}
+.e-big{font-family:var(--font-display);font-weight:400;font-size:clamp(22px,2.8vw,32px);line-height:1.3;margin:0 0 var(--space-6);max-width:40ch}
+.e-big b{color:var(--gold);font-weight:700}
+.e-sub{margin:0;font-size:18px;line-height:1.55;color:var(--lavender);max-width:62ch}
+.e-sub b{color:var(--white)}
+.flow{display:flex;flex-direction:column;align-items:center;padding:var(--space-4) 0}
+.fl-node{background:var(--navy);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:12px 26px;border-radius:var(--radius-pill);text-align:center}
+:root[data-theme="dark"] .fl-node:not(.accent):not(.gold){background:var(--indigo)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fl-node:not(.accent):not(.gold){background:var(--indigo)}}
+.fl-node.accent{background:var(--rust)}
+.fl-node.gold{background:var(--gold);color:var(--navy)}
+.fl-stem{width:1px;height:28px;background:var(--rule);flex:none}
+.fl-mini{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--rule);border-radius:var(--radius-pill);padding:4px 12px;background:var(--surface-raised)}
+.fl-row{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%;max-width:880px;padding:28px 0}
+.fl-row::before,.fl-row::after{content:"";position:absolute;left:calc((100% - 32px)/6);right:calc((100% - 32px)/6);border-top:1px solid var(--rule)}
+.fl-row::before{top:0}.fl-row::after{bottom:0}
+.fl-col{position:relative;display:flex}
+.fl-col::before,.fl-col::after{content:"";position:absolute;left:50%;height:28px;border-left:1px solid var(--rule)}
+.fl-col::before{top:-28px}.fl-col::after{bottom:-28px}
+.fl-card{flex:1;min-width:0;overflow-wrap:anywhere;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4);text-align:center}
+.fl-card b{display:block;font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:16px}
+.fl-card.slim{padding:10px var(--space-3)}
+.fl-card ul{list-style:none;margin:var(--space-2) 0 0;padding:var(--space-2) 0 0;border-top:1px solid var(--rule-soft);font-size:14px;color:var(--ink-muted);line-height:1.6}
+.fl-plus{display:flex;gap:var(--space-2);flex-wrap:wrap;justify-content:center}
+.fl-plus span{border:1px solid var(--gold);border-radius:var(--radius-pill);padding:6px 16px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:640px){.fl-row{gap:8px}.fl-row::before,.fl-row::after{left:calc((100% - 16px)/6);right:calc((100% - 16px)/6)}.fl-card{padding:var(--space-2)}.fl-card b{font-size:13px}.fl-card ul{font-size:12px}.fl-node{font-size:11px;padding:10px 16px}.e-statement{padding:var(--space-8) var(--space-6)}}
+.e-obj{display:flex;flex-direction:column;gap:var(--space-3)}
+.e-obj-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) minmax(0,1.4fr) minmax(0,1.8fr);gap:var(--space-6);background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-6);align-items:start}
+.e-obj-name{overflow-wrap:anywhere;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--ink);line-height:1.25;border-left:3px solid var(--rust);padding-left:var(--space-3)}
+.e-obj-row p{margin:0;font-size:15px}
+.e-lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:6px}
+@media (max-width:900px){.e-obj-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.e-obj-name{grid-column:1/-1}}
+@media (max-width:560px){.e-obj-row{grid-template-columns:1fr}}
+.etags{display:flex;flex-wrap:wrap;gap:6px}
+.etag{border:1px solid var(--gold);border-radius:var(--radius-pill);padding:3px 10px;font-size:13px;color:var(--ink);background:var(--surface)}
+.etag.solid{background:var(--butter);border-color:var(--butter);color:var(--navy)}
+.e-pil{min-width:980px}
+.e-pil td{vertical-align:top;padding-top:14px;padding-bottom:14px}
+.e-num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:12px;margin-right:10px;vertical-align:middle}
+:root[data-theme="dark"] .e-num{background:var(--gold);color:var(--navy)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .e-num{background:var(--gold);color:var(--navy)}}
+.e-pcell{display:flex;align-items:center;gap:10px}
+.e-pcell .e-num{margin-right:0;flex:none}
+.e-pname{font-family:var(--font-display);color:var(--ink);vertical-align:middle}
+.e-hz{display:flex;gap:3px;width:110px;margin-top:4px}
+.e-hz i{flex:1;height:8px;border-radius:var(--radius-pill);background:var(--gray-200)}
+:root[data-theme="dark"] .e-hz i{background:var(--line)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .e-hz i{background:var(--line)}}
+.e-hz i.on{background:var(--rust)}
+.e-hzl{display:block;font-size:12px;color:var(--ink-muted);margin-top:4px;font-weight:700}
+.e-kpi{font-weight:700;color:var(--ink)}
+.e-foco{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+.e-foco-card{background:var(--navy);color:var(--white);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)}
+:root[data-theme="dark"] .e-foco-card{background:var(--indigo)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .e-foco-card{background:var(--indigo)}}
+@media (max-width:900px){.e-foco{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.e-foco{grid-template-columns:1fr}}
+.e-foco-card b{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.2}
+.e-dots{display:flex;gap:6px}
+.e-dots i{width:14px;height:14px;border-radius:50%;border:1px solid var(--gold)}
+.e-dots i.on{background:var(--gold)}
+.e-pot{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:var(--radius-pill);border:1px solid var(--lavender);color:var(--lavender)}
+.e-pot.max{background:var(--rust);border-color:var(--rust);color:var(--white)}
 /* concorrentes */
 .comps{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:var(--space-4)}
 .ccard{background:var(--surface-raised);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)}
@@ -300,6 +366,7 @@ table.plain{width:100%;border-collapse:collapse;font-size:14px}
   <div class="brand"><img class="vale-logo" src="img/vale.png" alt="Vale"><span>Monitor de conta dti</span></div>
   <nav id="nav">
     <a href="#geral">Visão geral</a>
+    <a href="#estrategia">Estratégia Vale</a>
     <a href="#dti">Battle card dti</a>
     <a href="#concorrentes">Concorrentes</a>
   </nav>
@@ -668,6 +735,93 @@ function viewConc(){
     </div>`).join("")}</div>`;
 }
 
+
+/* ---------- Estratégia Vale (página de visualização) ---------- */
+const ESTR = {
+  mapa:[
+    {node:"Estratégia Vale",cls:"",rows:[[["Portfólio superior",["Cobre","Ferro","Níquel"]],["Excelência operacional",["Custo","Produtividade","Qualidade"]],["Parceira confiável",["Segurança","Barragens","ESG"]]]]},
+    {node:"Tecnologia / PD&I",cls:"accent",rows:[[["IA",[]],["Automação",[]],["Dados",[]]],"habilitam",[["Autonomia",[]],["Predição",[]],["Digitalização",[]]]]},
+    {node:"Operação inteligente",cls:"",rows:[[["Mina",["Capanema","caminhões","perfuratrizes"]],["Usina",["Conceição II","IA/ML","automação"]],["Logística",["AIFleet","Ecoshipping","drones"]]]]},
+    {node:"Resultado econômico",cls:"gold",rows:[[["Segurança",[]],["Custo",[]],["Produtividade",[]]]],plus:["Descarbonização","Confiabilidade","Qualidade"]}
+  ],
+  objetivos:[
+    ["Segurança","Reduzir exposição humana e risco operacional",["Automação","IA","visão computacional","robótica"],["Equipamentos autônomos","video analytics","monitoramento geotécnico","drones"]],
+    ["Excelência operacional","Aumentar produtividade e estabilidade",["IA","automação","dados em tempo real"],["Capanema","Usina Modelo","MinAInteligente"]],
+    ["Competitividade/custos","Reduzir custo unitário e manutenção",["Analytics","manutenção preditiva"],["AI/ML para ativos","otimização de frota","predictive maintenance"]],
+    ["Crescimento do minério de ferro","Aumentar volume mantendo qualidade/custo",["Digitalização de minas e plantas"],["Smart Operations","Usina Modelo","automação de mina"]],
+    ["Cobre","Dobrar produção até 2035",["Automação","processamento avançado","analytics"],["Automação/process optimization e tecnologias aplicadas aos ativos de Carajás"]],
+    ["Descarbonização","Reduzir emissões próprias e dos clientes",["IA","otimização","simulação","eficiência energética"],["MinAInteligente","VESO","PelotAInteligente","Ecoshipping"]],
+    ["Cadeia integrada","Melhorar previsibilidade mina → ferrovia → porto → navio → cliente",["Digital supply chain"],["AIFleet","digitalização logística","blockchain/documentos digitais"]],
+    ["Mineração do futuro","Mudar estruturalmente o modelo operacional",["Autonomia","digital twins","IA"],["Capanema","Usina Modelo","minas autônomas","operações remotas"]]
+  ],
+  pilares:[
+    ["Autonomous Operations","Segurança + produtividade",["Capanema","caminhões autônomos","perfuratrizes"],2030,"exposição humana / produtividade"],
+    ["Smart Processing","Recuperação + qualidade + custo",["Usina Modelo","ABB","Brucutu"],2028,"produtividade / recuperação"],
+    ["AI & Decision Intelligence","Melhor decisão operacional",["MinAInteligente","VESO","IA industrial"],2030,"valor capturado por IA"],
+    ["Predictive Operations","Disponibilidade",["manutenção preditiva","computer vision"],2029,"disponibilidade/OEE"],
+    ["Digital Supply Chain","Integrar cadeia ponta a ponta",["AIFleet","Ecoshipping","logística digital"],2030,"custo/t + OTIF"],
+    ["Decarbonization Tech","Reduzir carbono/custo",["MinAInteligente","VESO","eletrificação"],2030,"tCO₂/t"],
+    ["Circular Mining Tech","Mais valor do recurso",["Waste to Value","rejeitos","Capanema"],2030,"% produção circular"],
+    ["Enterprise Digital","Simplificar/cortar custos",["Supply Transformation","automação"],2027,"custo transacional"],
+    ["Data & AI Platform","Escala",["data platform","MLOps","GenAI"],2030,"% modelos industrializados"],
+    ["Cyber/OT Security","Resiliência",["OT security","AI governance"],2030,"incidentes críticos"],
+    ["Workforce 4.0","Operar a nova tecnologia",["remote operations","reskilling"],2030,"% workforce digital"]
+  ],
+  foco:[["AI & Data Products",5,"Muito alto"],["Digital Operations",5,"Muito alto"],["Smart Plant / Smart Mine",4,"Alto"],["Digital Supply Chain",5,"Muito alto"],["Workforce / Digital Experience",4,"Alto"],["Enterprise Automation / AI",4,"Alto"]]
+};
+function viewEstrategia(){
+  const tags=(a,c="")=>`<div class="etags">${a.map(x=>`<span class="etag ${c}">${esc(x)}</span>`).join("")}</div>`;
+  const row=r=>`<div class="fl-row">${r.map(([h,items])=>`<div class="fl-col"><div class="fl-card${items.length?"":" slim"}"><b>${esc(h)}</b>${items.length?`<ul>${items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`:""}</div></div>`).join("")}</div>`;
+  const mapa=ESTR.mapa.map((s,i)=>`${i?'<span class="fl-stem"></span>':""}<div class="fl-node ${s.cls}">${esc(s.node)}</div><span class="fl-stem"></span>${s.rows.map(r=>typeof r==="string"?`<span class="fl-mini">${esc(r)}</span>`:row(r)).join('<span class="fl-stem"></span>')}${s.plus?`<span class="fl-stem"></span><div class="fl-plus">${s.plus.map(p=>`<span>+ ${esc(p)}</span>`).join("")}</div>`:""}`).join("");
+  const years=[2026,2027,2028,2029,2030];
+  return `
+  <span class="eyebrow">Contexto da conta</span>
+  <h1>Estratégia da <b>Vale</b></h1>
+  <div class="e-statement">
+    <p class="e-big">A tecnologia na Vale está sendo posicionada como uma <b>alavanca direta dos objetivos operacionais e estratégicos</b>, não como uma função de suporte.</p>
+    <p class="e-sub">O foco é transformar ativos físicos, processos e decisões em operações mais <b>autônomas, preditivas, integradas e orientadas por dados</b>.</p>
+  </div>
+
+  <section>
+    <div class="sec-head"><div><span class="eyebrow">01 Mapa estratégico</span><h2>Da estratégia ao <b>resultado</b></h2><p>Como a agenda tecnológica conecta os objetivos da Vale ao resultado econômico.</p></div></div>
+    <div class="panel"><div class="flow">${mapa}</div></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div><span class="eyebrow">02 Objetivos</span><h2>Objetivos estratégicos e <b>agenda tecnológica</b></h2></div></div>
+    <div class="e-obj">${ESTR.objetivos.map(([o,d,a,p])=>`
+      <div class="e-obj-row">
+        <div class="e-obj-name">${esc(o)}</div>
+        <div><span class="e-lbl">Desafio de negócio</span><p>${esc(d)}</p></div>
+        <div><span class="e-lbl">Agenda tecnológica</span>${tags(a,"solid")}</div>
+        <div><span class="e-lbl">Principais projetos e soluções</span>${tags(p)}</div>
+      </div>`).join("")}</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div><span class="eyebrow">03 Pilares</span><h2>Pilares <b>tecnológicos</b></h2><p>Onze frentes com objetivo, projetos-chave, horizonte e KPI principal.</p></div></div>
+    <div class="mx-wrap"><table class="plain e-pil">
+      <thead><tr><th>Pilar tecnológico</th><th>Objetivo de negócio</th><th>Projetos-chave</th><th>Horizonte</th><th>KPI principal</th></tr></thead>
+      <tbody>${ESTR.pilares.map(([n,o,p,end,k],i)=>`<tr>
+        <td><div class="e-pcell"><span class="e-num">${i+1}</span><b class="e-pname">${esc(n)}</b></div></td>
+        <td>${esc(o)}</td>
+        <td>${tags(p)}</td>
+        <td><div class="e-hz" title="2026–${end}">${years.map(y=>`<i class="${y<=end?"on":""}"></i>`).join("")}</div><span class="e-hzl">2026–${String(end).slice(2)}</span></td>
+        <td class="e-kpi">${esc(k)}</td></tr>`).join("")}</tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div><span class="eyebrow">04 Foco dti</span><h2>Territórios de <b>atuação</b></h2><p>Atratividade e potencial de cada território para a dti.</p></div></div>
+    <div class="e-foco">${ESTR.foco.map(([t,s,p])=>`
+      <div class="e-foco-card">
+        <b>${esc(t)}</b>
+        <div class="e-dots" aria-label="Atratividade ${s} de 5">${[1,2,3,4,5].map(n=>`<i class="${n<=s?"on":""}"></i>`).join("")}</div>
+        <span class="e-pot ${p==="Muito alto"?"max":""}">Potencial ${esc(p.toLowerCase())}</span>
+      </div>`).join("")}</div>
+  </section>`;
+}
+
 /* ---------- Router ---------- */
 let pending=false;
 function isEditing(){const a=document.activeElement;return a&&$view.contains(a)&&/^(INPUT|TEXTAREA)$/.test(a.tagName)&&a.type!=="checkbox"}
@@ -679,6 +833,7 @@ function render(){
   if(h.startsWith("diretoria/")){html=viewDir(h.split("/")[1]);nav="geral"}
   else if(h.startsWith("gestor/")){html=viewMgr(h.split("/")[1]);nav="geral"}
   else if(h==="dti"){html=viewDti();nav="dti"}
+  else if(h==="estrategia"){html=viewEstrategia();nav="estrategia"}
   else if(h==="concorrentes"){html=viewConc();nav="concorrentes"}
   else html=viewGeral();
   const ro = !dbChecked ? "" : !sb ? '<div class="ro-banner">Sem conexão com o banco de dados. Confira o arquivo config.js.</div>'
@@ -804,7 +959,15 @@ $("loginForm").addEventListener("submit",async e=>{
   try{
     if(loginMode==="login"){
       const {error}=await sb.auth.signInWithPassword({email,password:pass});
-      if(error){msg.textContent = /invalid/i.test(error.message) ? "E-mail ou senha incorretos." : "Não foi possível entrar. Tente de novo.";return}
+      if(error){
+        const m=(error.message||"")+" "+(error.code||"");
+        msg.textContent = /not.?confirmed/i.test(m) ? "Este e-mail ainda não foi confirmado no Supabase. Peça para marcarem o usuário como confirmado."
+          : /invalid/i.test(m) ? "E-mail ou senha incorretos."
+          : /provider|disabled/i.test(m) ? "O login por e-mail e senha está desativado no Supabase."
+          : /api key|apikey|jwt|unauthorized/i.test(m) ? "Chave do Supabase inválida. Confira o config.js."
+          : /fetch|network/i.test(m) ? "Sem conexão com o Supabase. Confira a URL no config.js."
+          : "Não foi possível entrar ("+(error.message||"erro desconhecido")+").";
+        console.error("Login:",error);return}
       dlg.close(); toast("Você entrou no modo de edição");
     }else if(loginMode==="forgot"){
       const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
